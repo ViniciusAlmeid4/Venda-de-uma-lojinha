@@ -51,7 +51,7 @@ void cadastro () {
 	printf("\nDigite o nome do produto: ");
 	fflush(stdin);
 	gets(produtos[sequencia].nome);
-	printf("\nDigite o preço do produto: ");
+	printf("\nDigite o preÃ§o do produto: ");
 	scanf("%lf",&produtos[sequencia].preco);
 	printf("\nDigite a quantidade inicial de %s: ",produtos[sequencia].nome);
 	scanf("%d",&produtos[sequencia].estoque);
@@ -65,9 +65,9 @@ void listar () {
 	
 	system("cls");
 	for(x=0;x<sequencia;x++){
-		printf("Código do produto: %d", produtos[x].codigo);
+		printf("CÃ³digo do produto: %d", produtos[x].codigo);
 		printf("\nProduto: %s", produtos[x].nome);
-		printf("\nPreço do produto: %.2lf", produtos[x].preco);
+		printf("\nPreÃ§o do produto: %.2lf", produtos[x].preco);
 		printf("\nQuantidade em estoque: %d\n", produtos[x].estoque);
 		printf("_____________________________\n\n");
 	}
@@ -78,11 +78,11 @@ void listar () {
 void venda () {
 	int x=1, produto;
 	
-	while(x!=0){
+	while(x==1){
 	system("cls");
 
 		if(x==1){
-			printf("\nDigite o código do produto: ");
+			printf("\nDigite o cÃ³digo do produto: ");
 			scanf("%d",&produto);
 			if(busca(produto)==1){
 				printf("\nDigite a quantidade do produto: ");
@@ -94,28 +94,28 @@ void venda () {
 						double preco;
 						preco=qtde * produtos[produto-1].preco;
 						printf("\nValor a pagar: %.2lf\n\n", preco);
-						printf("\nEstoque restante: %d", produtos[produto-1].estoque);
+						printf("\nEstoque restante: %d\n\n", produtos[produto-1].estoque);
 						system("pause");
 					}else{
 						printf("\nQuantidade de estoque insuficiente.");
 					}	
 				}else{
-					printf("\nQuantidade de estoque inválida.\n");
+					printf("\nQuantidade de estoque invÃ¡lida.\n");
 				}
 			}else{
-				printf("\nProduto não existe.\n");
+				printf("\nProduto nÃ£o existe.\n");
 				system("pause");
 			}
 		}
-		printf("\nDeseja fazer outra venda?\n 1-sim   2-não \n\n");
+		printf("\nDeseja fazer outra venda?\n 1 - sim    //   Outro valor - nÃ£o \n\n");
 		scanf("%d",&x);	
 	}
 }
 	
 void menu () {
 	printf("\n-----Sistema de Gerenciamento-----\n");
-	printf("\nSelecione a ação a ser executada:\n");
-	printf("\n1-Cadastrar produto(s).   \n2-Listar os produtos.   \n3-Realizar venda(s).   \n4-Buscar produto.   \n5-Quantidade no estoque(Código).   \n0-Sair.\n\n");
+	printf("\nSelecione a aÃ§Ã£o a ser executada:\n");
+	printf("\n1-Cadastrar produto(s).   \n2-Listar os produtos.   \n3-Realizar venda(s).   \n4-Buscar produto.   \n5-Quantidade no estoque(CÃ³digo).   \n0-Sair.\n\n");
 }
 
 int main () {
@@ -142,7 +142,7 @@ int main () {
 			break;
 			
 			case 4:
-				printf("\nDigite o código do produto: ");
+				printf("\nDigite o cÃ³digo do produto: ");
 				scanf("%d", &produto);
 				if(busca(produto)==1){
 					printf("Produto existente.\n");
@@ -154,7 +154,7 @@ int main () {
 			
 			case 5:
 				system("cls");
-				printf("\nDigite o código do produto: ");
+				printf("\nDigite o cÃ³digo do produto: ");
 				scanf("%d", &produto);
 				printf("Digite a quantidade de estoque desejada: ");
 				int qtde;
@@ -163,20 +163,20 @@ int main () {
 				if(verificaEstoque(produto,qtde)==1){
 					printf("\ntem em estoque: %d\n", produtos[produto-1].estoque);
 				}else{
-					printf("\nNão tem estoque ou não existe produto, quantidade: %d\n", produtos[produto-1].estoque);
+					printf("\nNÃ£o tem estoque ou nÃ£o existe produto, quantidade: %d\n", produtos[produto-1].estoque);
 				}
 				system("pause");
 					
 			break;
 			
 			case 0:
-				printf("\nSaindo da aplicação.\n");
+				printf("\nSaindo da aplicaÃ§Ã£o.\n");
 			break;
 			default:
-				printf("Opção Inválida!\n");
+				printf("OpÃ§Ã£o InvÃ¡lida!\n");
 		}
 	} while(opcao!= 0);
 	
-	printf("\nAplicação encerrada.\n");
+	printf("\nAplicaÃ§Ã£o encerrada.\n");
 	return 0;
 }
